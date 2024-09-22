@@ -13,69 +13,69 @@ import tkinter as tk
 #=======Functions=======
 def viewEmail():
     email_bg.pack(side=TOP, fill='both', expand=True)
-    pet_bg.pack_forget()
+    axl_bg.pack_forget()
     
 def hideEmail():
-    pet_bg.pack (side=TOP, fill='both', expand=True)
+    axl_bg.pack (side=TOP, fill='both', expand=True)
     email_bg.pack_forget()
 
 def viewChips():
     chip_bg.pack(side=TOP, fill='both', expand=True)
-    pet_bg.pack_forget()
+    axl_bg.pack_forget()
     
 def hideChips():
-    pet_bg.pack(side=TOP, fill='both', expand=True)
+    axl_bg.pack(side=TOP, fill='both', expand=True)
     chip_bg.pack_forget()
 
 def viewLibrary():
     lib_bg.pack(side=TOP, fill='both', expand=True)
-    pet_bg.pack_forget()
+    axl_bg.pack_forget()
     
 def hideLibrary():
-    pet_bg.pack(side=TOP, fill='both', expand=True)
+    axl_bg.pack(side=TOP, fill='both', expand=True)
     lib_bg.pack_forget()
 
 def viewNavi():
     nav_bg.pack(side=TOP, fill='both', expand=True)
-    pet_bg.pack_forget()
+    axl_bg.pack_forget()
 
 def hideNavi():
-    pet_bg.pack(side=TOP, fill='both', expand=True)
+    axl_bg.pack(side=TOP, fill='both', expand=True)
     nav_bg.pack_forget()
 
 def viewSettings():
     set_bg.pack(side=TOP, fill='both', expand=True)
-    pet_bg.pack_forget()
+    axl_bg.pack_forget()
 
 def hideSettings():
-    pet_bg.pack(side=TOP, fill='both', expand=True)
+    axl_bg.pack(side=TOP, fill='both', expand=True)
     set_bg.pack_forget()
 
 def updateTime():
     time = dt.now()
     pet_time.config(text=f"{str(time)[11:19]}")
-    pet_main.after(100, updateTime)
+    axl_main.after(100, updateTime)
 
 def changeOnHover(button):
     button.bind("<Enter>", func=lambda e: button.config(background=pgt.pet_button_hover, width='13'))
     button.bind("<Leave>", func=lambda e: button.config(background=pgt.pet_button_colour, width='9'))
 
-pet_main        = tk.Tk()
+axl_main        = tk.Tk()
 width,height    = 480,360
 
-screen_width    = pet_main.winfo_screenwidth()
-screen_height   = pet_main.winfo_screenheight()
+screen_width    = axl_main.winfo_screenwidth()
+screen_height   = axl_main.winfo_screenheight()
 
 x               = (screen_width/2)  - (width/2)
 y               = (screen_height/2) - (height/2)
 
-pet_main.title         ("Axol Terminal")
-pet_main.geometry      ('%dx%d+%d+%d' % (width, height, x, y))
-pet_main.resizable     (False, False)
-pet_main.option_add    ('*tearOff', False)
+axl_main.title         ("Axol Terminal")
+axl_main.geometry      ('%dx%d+%d+%d' % (width, height, x, y))
+axl_main.resizable     (False, False)
+axl_main.option_add    ('*tearOff', False)
 
 # app_icon   = PhotoImage(file='Icon.png')
-# pet_main.iconphoto     (True, app_icon)
+# axl_main.iconphoto     (True, app_icon)
 
 pet_themes = {0:default_theme}
 
@@ -83,14 +83,14 @@ cur_theme  = 0
 pgt = pet_themes[cur_theme]
 
 #==========Frames=================
-pet_bg      = Frame    (pet_main, background=pgt.pet_bg_colour)
-pet_bg.pack            (side=TOP, fill=BOTH, expand=True)
+axl_bg      = Frame    (axl_main, background=pgt.pet_bg_colour)
+axl_bg.pack            (side=TOP, fill=BOTH, expand=True)
 
-pet_edgeb   = Frame    (pet_bg, background=pgt.pet_button_colour, height='15')
+pet_edgeb   = Frame    (axl_bg, background=pgt.pet_button_colour, height='15')
 pet_edgeb.pack         (side=BOTTOM, fill='x')
 
 #==========Email Elements==========
-email_bg     = Frame   (pet_main, background=pgt.pet_bg_colour)
+email_bg     = Frame   (axl_main, background=pgt.pet_bg_colour)
 
 email_label  = Label   (email_bg, text="E-Mail", font=("Arial", 12))
 email_label.configure  (foreground="white", background=pgt.pet_button_colour)
@@ -112,7 +112,7 @@ email_tour = Button(email_bg, text="Tournament\nEntires")
 email_tour.pack(side=TOP, anchor=NW, pady='5')
 
 #==========Battle Chips Elements==========
-chip_bg = Frame(pet_main, background=pgt.pet_bg_colour)
+chip_bg = Frame(axl_main, background=pgt.pet_bg_colour)
 
 chip_label   = Label(chip_bg, text="Combat Data Folder", font=("Arial", 12))
 chip_label.configure(foreground="white", background=pgt.pet_button_colour)
@@ -139,7 +139,7 @@ for c in range(1,51):
 chip_scroll.config(command=chip_list.yview)
 
 #==========Chip Library Elements==========
-lib_bg = Frame(pet_main, background=pgt.pet_bg_colour)
+lib_bg = Frame(axl_main, background=pgt.pet_bg_colour)
 
 lib_label    = Label(lib_bg, text="Combat Data Library", font=("Arial", 12))
 lib_label.configure(foreground="white", background=pgt.pet_button_colour)
@@ -152,7 +152,7 @@ lib_exit     = Button(lib_bg, text="RETURN", command=hideLibrary)
 lib_exit.pack(side=BOTTOM, anchor=SE, pady='10')
 
 #==========Settings Elements==========
-set_bg = Frame(pet_main, background=pgt.pet_bg_colour)
+set_bg = Frame(axl_main, background=pgt.pet_bg_colour)
 
 set_label   = Label(set_bg, text="AxT Settings", font=("Arial", 12))
 set_label.configure(foreground="white", background=pgt.pet_button_colour)
@@ -165,7 +165,7 @@ set_exit    = Button(set_bg, text="EXIT", command=hideSettings)
 set_exit.pack(side=BOTTOM, anchor=SE, pady='10')
 
 #==========Navi Elements==========
-nav_bg      = Frame(pet_main, background=pgt.pet_bg_colour)
+nav_bg      = Frame(axl_main, background=pgt.pet_bg_colour)
 
 nav_label   = Label(nav_bg, text="Axol Manager", font=("Arial", 12))
 nav_label.configure(foreground="white", background=pgt.pet_button_colour)
@@ -178,31 +178,31 @@ nav_exit    = Button(nav_bg, text="EXIT", command=hideNavi)
 nav_exit.pack(side=BOTTOM, anchor=SE, pady='10')
 
 #=======Labels=======
-pet_zenny = Label(pet_bg, text="Axol Terminal", font=("Arial", 12))
+pet_zenny = Label(axl_bg, text="Axol Terminal", font=("Arial", 12))
 pet_zenny.pack(anchor=NE, fill='x')
 
-pet_time = Label(pet_bg, text="00:00", font=("Arial", 16))
+pet_time = Label(axl_bg, text="00:00", font=("Arial", 16))
 pet_time.pack(side=BOTTOM, anchor=SW)
 
 #=======Buttons=======
-button_email    = Button(pet_bg, text="E-MAIL", command=viewEmail)
+button_email    = Button(axl_bg, text="E-MAIL", command=viewEmail)
 button_email.pack(anchor=NE, pady='5')
 
-button_chips    = Button(pet_bg, text="CHIP\nFOLDER", command=viewChips)
+button_chips    = Button(axl_bg, text="CHIP\nFOLDER", command=viewChips)
 button_chips.pack(anchor=NE, pady='5')
 
-button_library  = Button(pet_bg, text="CHIP\nLIBRARY", command=viewLibrary)
+button_library  = Button(axl_bg, text="CHIP\nLIBRARY", command=viewLibrary)
 button_library.pack(anchor=NE, pady='5')
 
-button_navi     = Button(pet_bg, text="AXOL", command=viewNavi)
+button_navi     = Button(axl_bg, text="AXOL", command=viewNavi)
 button_navi.pack(anchor=NE, pady='5')
 
-button_settings = Button(pet_bg, text="SETTINGS", command=viewSettings)
+button_settings = Button(axl_bg, text="SETTINGS", command=viewSettings)
 button_settings.pack(anchor=NE, pady='5')
 
 #=======Styling Widgets=======
 #List of PET Menus
-panels = [pet_bg, lib_bg, chip_bg, email_bg, set_bg, nav_bg]
+panels = [axl_bg, lib_bg, chip_bg, email_bg, set_bg, nav_bg]
 
 #Apply styles to Labels and Buttons
 def configureObjects():
@@ -222,4 +222,4 @@ if __name__ == "__main__":
     print("Developed by Leothera")
     configureObjects()
     updateTime()
-    pet_main.mainloop()
+    axl_main.mainloop()
