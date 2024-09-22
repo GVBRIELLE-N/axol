@@ -77,9 +77,10 @@ axl_main.option_add    ('*tearOff', False)
 # app_icon   = PhotoImage(file='Icon.png')
 # axl_main.iconphoto     (True, app_icon)
 
-pet_themes = {0:default_theme, 1:default_dark, 2:matra_os, 3:matra_os_b}
+pet_themes = {0:default_theme, 1:default_dark, 2:matra_os, 
+                    3:matra_os_b, 4:retro_95}
 
-cur_theme  = 1
+cur_theme  = 4
 pgt = pet_themes[cur_theme]
 
 #==========Frames=================
