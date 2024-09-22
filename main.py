@@ -164,6 +164,12 @@ set_footer.pack(side=BOTTOM, fill='x')
 set_exit    = Button(set_bg, text="EXIT", command=hideSettings)
 set_exit.pack(side=BOTTOM, anchor=SE, pady='10')
 
+set_theme    = Button(set_bg, text="THEME")
+set_theme.pack(side=BOTTOM, anchor=SE, pady='5')
+
+set_layout = Button(set_bg, text="LAYOUT")
+set_layout.pack(side=BOTTOM, anchor=SE, pady='5')
+
 #==========Navi Elements==========
 nav_bg      = Frame(axl_main, background=pgt.pet_bg_colour)
 
