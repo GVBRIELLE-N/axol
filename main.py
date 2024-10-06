@@ -1,4 +1,4 @@
-from config.window import configureObjects, updateTime, axl_main
+from config.window_main import configureObjects, updateTime, axl_main
 
 
 if __name__ == "__main__":

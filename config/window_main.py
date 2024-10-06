@@ -57,7 +57,7 @@ def updateTime():
     axl_main.after(100, updateTime)
 
 def changeOnHover(button):
-    button.bind("<Enter>", func=lambda e: button.config(background=pgt.pet_button_hover, width='13'))
+    button.bind("<Enter>", func=lambda e: button.config(background=pgt.pet_button_hover, width=pgt.pet_hover))
     button.bind("<Leave>", func=lambda e: button.config(background=pgt.pet_button_colour, width='9'))
 
 axl_main        = tk.Tk()
@@ -69,7 +69,7 @@ screen_height   = axl_main.winfo_screenheight()
 x               = (screen_width/2)  - (width/2)
 y               = (screen_height/2) - (height/2)
 
-axl_main.title         ("Axol Terminal")
+axl_main.title         ("Espee")
 axl_main.geometry      ('%dx%d+%d+%d' % (width, height, x, y))
 axl_main.resizable     (False, False)
 axl_main.option_add    ('*tearOff', False)
@@ -80,7 +80,7 @@ axl_main.option_add    ('*tearOff', False)
 pet_themes = {0:default_theme, 1:default_dark, 2:matra_os, 
                     3:matra_os_b, 4:retro_95}
 
-cur_theme  = 0
+cur_theme  = 4
 pgt = pet_themes[cur_theme]
 
 #==========Frames=================
@@ -103,19 +103,16 @@ email_footer.pack      (side=BOTTOM, fill='x')
 email_exit   = Button(email_bg, text="RETURN", command=hideEmail)
 email_exit.pack(side=BOTTOM, anchor=SW, pady='10')
 
-email_main   = Button(email_bg, text="Regular Mail")
-email_main.pack(side=TOP, anchor=NW, pady='5')
+email_new   = Button(email_bg, text="UNREAD\nMAIL")
+email_new.pack(side=TOP, anchor=NW, pady='5')
 
-email_missions = Button(email_bg, text="Official\nMissions")
-email_missions.pack(side=TOP, anchor=NW, pady='5')
-
-email_tour = Button(email_bg, text="Tournament\nEntires")
-email_tour.pack(side=TOP, anchor=NW, pady='5')
+email_old = Button(email_bg, text="OLD\nMAIL")
+email_old.pack(side=TOP, anchor=NW, pady='5')
 
 #==========Battle Chips Elements==========
 chip_bg = Frame(axl_main, background=pgt.pet_bg_colour)
 
-chip_label   = Label(chip_bg, text="Combat Data Folder", font=("Arial", 12))
+chip_label   = Label(chip_bg, text="Data Folder", font=("Arial", 12))
 chip_label.configure(foreground="white", background=pgt.pet_button_colour)
 chip_label.pack(anchor=NE, fill='x')
 
@@ -125,24 +122,10 @@ chip_footer.pack(side=BOTTOM, fill='x')
 chip_exit    = Button(chip_bg, text="RETURN", command=hideChips)
 chip_exit.pack(side=BOTTOM, anchor=S, fill='x')
 
-chip_scroll = Scrollbar(chip_bg, orient='vertical', troughcolor=pgt.pet_bg_colour, background=pgt.pet_button_colour, 
-    borderwidth='0', activebackground=pgt.pet_button_hover)
-chip_scroll.pack(side='left', fill='y')
-
-chip_list = Listbox(chip_bg, yscrollcommand=chip_scroll.set, background=pgt.pet_button_colour, 
-    foreground='white', borderwidth=0, height=20, width=14, selectbackground=pgt.pet_button_hover,
-    selectforeground='white', relief='flat')
-chip_list.pack(anchor=NW, fill='y')
-
-for c in range(1,51):
-    chip_list.insert(END, "ComData  #"+str(c))
-
-chip_scroll.config(command=chip_list.yview)
-
-#==========Chip Library Elements==========
+#==========Notes Elements==========
 lib_bg = Frame(axl_main, background=pgt.pet_bg_colour)
 
-lib_label    = Label(lib_bg, text="Combat Data Library", font=("Arial", 12))
+lib_label    = Label(lib_bg, text="Notes", font=("Arial", 12))
 lib_label.configure(foreground="white", background=pgt.pet_button_colour)
 lib_label.pack(anchor=NE, fill='x')
 
@@ -155,7 +138,7 @@ lib_exit.pack(side=BOTTOM, anchor=SE, pady='10')
 #==========Settings Elements==========
 set_bg = Frame(axl_main, background=pgt.pet_bg_colour)
 
-set_label   = Label(set_bg, text="AxT Settings", font=("Arial", 12))
+set_label   = Label(set_bg, text="Settings", font=("Arial", 12))
 set_label.configure(foreground="white", background=pgt.pet_button_colour)
 set_label.pack(anchor=NE, fill='x')
 
@@ -195,10 +178,10 @@ pet_time.pack(side=BOTTOM, anchor=SW)
 button_email    = Button(axl_bg, text="E-MAIL", command=viewEmail)
 button_email.pack(anchor=NE, pady='5')
 
-button_chips    = Button(axl_bg, text="CHIP\nFOLDER", command=viewChips)
+button_chips    = Button(axl_bg, text="DATA\nFOLDER", command=viewChips)
 button_chips.pack(anchor=NE, pady='5')
 
-button_library  = Button(axl_bg, text="CHIP\nLIBRARY", command=viewLibrary)
+button_library  = Button(axl_bg, text="DATA\nLIBRARY", command=viewLibrary)
 button_library.pack(anchor=NE, pady='5')
 
 button_navi     = Button(axl_bg, text="AXOL", command=viewNavi)
@@ -218,7 +201,7 @@ def configureObjects():
             if isinstance(wid, Label):
                 wid.configure(foreground="white", background=pgt.pet_button_colour)
             elif isinstance(wid, Button):
-                wid.configure(relief='flat' ,foreground="white", background=pgt.pet_button_colour,
+                wid.configure(relief=pgt.pet_button_relief ,foreground="white", background=pgt.pet_button_colour,
                           activeforeground='white', activebackground=pgt.pet_button_pressed, 
-                          borderwidth='0', height='2', width='9')
+                          borderwidth=pgt.pet_border, height='2', width='9')
                 changeOnHover(wid)
