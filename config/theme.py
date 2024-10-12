@@ -52,3 +52,14 @@ class retro_95:
     pet_button_colour   = "#C3C3C3"
     pet_button_pressed  = "#E2E2E2"
     pet_button_hover    = "#E2E2E2"
+
+class puppypoppy:
+    pet_theme_name      = "Leothera Dark"
+    pet_button_relief   = "flat"
+    pet_border          = "0"
+    pet_hover           = "13"
+    pet_text_colour     = "white"
+    pet_bg_colour       = "#151515"
+    pet_button_colour   = "#0E0E0E"
+    pet_button_pressed  = "#000000"
+    pet_button_hover    = "#0D0D0D"

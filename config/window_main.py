@@ -19,29 +19,29 @@ def hideTask():
     axl_bg.pack (side=TOP, fill='both', expand=True)
     task_bg.pack_forget()
 
-def viewChips():
-    chip_bg.pack(side=TOP, fill='both', expand=True)
+def viewCalendar():
+    cal_bg.pack(side=TOP, fill='both', expand=True)
     axl_bg.pack_forget()
     
-def hideChips():
+def hideCalendar():
     axl_bg.pack(side=TOP, fill='both', expand=True)
-    chip_bg.pack_forget()
+    cal_bg.pack_forget()
 
-def viewLibrary():
-    lib_bg.pack(side=TOP, fill='both', expand=True)
+def viewNotes():
+    note_bg.pack(side=TOP, fill='both', expand=True)
     axl_bg.pack_forget()
     
-def hideLibrary():
+def hideNotes():
     axl_bg.pack(side=TOP, fill='both', expand=True)
-    lib_bg.pack_forget()
+    note_bg.pack_forget()
 
-def viewNavi():
-    nav_bg.pack(side=TOP, fill='both', expand=True)
+def viewComm():
+    com_bg.pack(side=TOP, fill='both', expand=True)
     axl_bg.pack_forget()
 
-def hideNavi():
+def hideComm():
     axl_bg.pack(side=TOP, fill='both', expand=True)
-    nav_bg.pack_forget()
+    com_bg.pack_forget()
 
 def viewSettings():
     set_bg.pack(side=TOP, fill='both', expand=True)
@@ -53,7 +53,7 @@ def hideSettings():
 
 def updateTime():
     time = dt.now()
-    pet_time.config(text=f"{str(time)[11:19]}")
+    app_time.config(text=f"{str(time)[11:19]}")
     axl_main.after(100, updateTime)
 
 def changeOnHover(button):
@@ -69,7 +69,7 @@ screen_height   = axl_main.winfo_screenheight()
 x               = (screen_width/2)  - (width/2)
 y               = (screen_height/2) - (height/2)
 
-axl_main.title         ("Espee")
+axl_main.title         ("Espee | Alpha Version")
 axl_main.geometry      ('%dx%d+%d+%d' % (width, height, x, y))
 axl_main.resizable     (False, False)
 axl_main.option_add    ('*tearOff', False)
@@ -78,9 +78,9 @@ axl_main.option_add    ('*tearOff', False)
 # axl_main.iconphoto     (True, app_icon)
 
 pet_themes = {0:default_theme, 1:default_dark, 2:matra_os, 
-                    3:matra_os_b, 4:retro_95}
+              3:matra_os_b, 4:retro_95, 5: puppypoppy}
 
-cur_theme  = 4
+cur_theme  = 5
 pgt = pet_themes[cur_theme]
 
 #==========Frames=================
@@ -114,30 +114,30 @@ task_todo   = Button(task_bg, text="TODO")
 task_todo.pack(side=TOP, anchor=NE, pady='5')
 
 #==========Calendar Elements==========
-chip_bg = Frame(axl_main, background=pgt.pet_bg_colour)
+cal_bg = Frame(axl_main, background=pgt.pet_bg_colour)
 
-chip_label   = Label(chip_bg, text="Calendar", font=("Arial", 12))
-chip_label.configure(foreground="white", background=pgt.pet_button_colour)
-chip_label.pack(anchor=NE, fill='x')
+cal_label   = Label(cal_bg, text="Calendar", font=("Arial", 12))
+cal_label.configure(foreground="white", background=pgt.pet_button_colour)
+cal_label.pack(anchor=NE, fill='x')
 
-chip_footer  = Frame(chip_bg, background=pgt.pet_button_colour, height='20')
-chip_footer.pack(side=BOTTOM, fill='x')
+cal_footer  = Frame(cal_bg, background=pgt.pet_button_colour, height='20')
+cal_footer.pack(side=BOTTOM, fill='x')
 
-chip_exit    = Button(chip_bg, text="RETURN", command=hideChips)
-chip_exit.pack(side=BOTTOM, anchor=SE, pady='10')
+cal_exit    = Button(cal_bg, text="RETURN", command=hideCalendar)
+cal_exit.pack(side=BOTTOM, anchor=SE, pady='10')
 
 #==========Notes Elements==========
-lib_bg = Frame(axl_main, background=pgt.pet_bg_colour)
+note_bg = Frame(axl_main, background=pgt.pet_bg_colour)
 
-lib_label    = Label(lib_bg, text="Notes", font=("Arial", 12))
-lib_label.configure(foreground="white", background=pgt.pet_button_colour)
-lib_label.pack(anchor=NE, fill='x')
+note_label    = Label(note_bg, text="Notes", font=("Arial", 12))
+note_label.configure(foreground="white", background=pgt.pet_button_colour)
+note_label.pack(anchor=NE, fill='x')
 
-lib_footer   = Frame(lib_bg, background=pgt.pet_button_colour, height='20')
-lib_footer.pack(side=BOTTOM, fill='x')
+note_footer   = Frame(note_bg, background=pgt.pet_button_colour, height='20')
+note_footer.pack(side=BOTTOM, fill='x')
 
-lib_exit     = Button(lib_bg, text="RETURN", command=hideLibrary)
-lib_exit.pack(side=BOTTOM, anchor=SE, pady='10')
+note_exit     = Button(note_bg, text="RETURN", command=hideNotes)
+note_exit.pack(side=BOTTOM, anchor=SE, pady='10')
 
 #==========Settings Elements==========
 set_bg = Frame(axl_main, background=pgt.pet_bg_colour)
@@ -158,45 +158,45 @@ set_theme.pack(side=BOTTOM, anchor=SE, pady='5')
 set_layout = Button(set_bg, text="LAYOUT")
 set_layout.pack(side=BOTTOM, anchor=SE, pady='5')
 
-#==========Navi Elements==========
-nav_bg      = Frame(axl_main, background=pgt.pet_bg_colour)
+#==========Command Elements==========
+com_bg      = Frame(axl_main, background=pgt.pet_bg_colour)
 
-nav_label   = Label(nav_bg, text="Axol Manager", font=("Arial", 12))
-nav_label.configure(foreground="white", background=pgt.pet_button_colour)
-nav_label.pack(anchor=NE, fill='x')
+com_label   = Label(com_bg, text="Command Panel", font=("Arial", 12))
+com_label.configure(foreground="white", background=pgt.pet_button_colour)
+com_label.pack(anchor=NE, fill='x')
 
-nav_footer  = Frame(nav_bg, background=pgt.pet_button_colour, height='20')
-nav_footer.pack(side=BOTTOM, fill='x')
+com_footer  = Frame(com_bg, background=pgt.pet_button_colour, height='20')
+com_footer.pack(side=BOTTOM, fill='x')
 
-nav_exit    = Button(nav_bg, text="EXIT", command=hideNavi)
-nav_exit.pack(side=BOTTOM, anchor=SE, pady='10')
+com_exit    = Button(com_bg, text="EXIT", command=hideComm)
+com_exit.pack(side=BOTTOM, anchor=SE, pady='10')
 
 #=======Labels=======
-pet_zenny = Label(axl_bg, text="Espee Alpha Build", font=("Arial", 12))
-pet_zenny.pack(anchor=NE, fill='x')
+app_title = Label(axl_bg, text="Espee Alpha Build", font=("Arial", 12))
+app_title.pack(anchor=NE, fill='x')
 
-pet_time = Label(axl_bg, text="00:00", font=("Arial", 16))
-pet_time.pack(side=BOTTOM, anchor=SW)
+app_time = Label(axl_bg, text="00:00", font=("Arial", 16))
+app_time.pack(side=BOTTOM, anchor=SW)
 
 #=======Buttons=======
-button_email    = Button(axl_bg, text="CALENDAR", command=viewChips)
-button_email.pack(anchor=NE, pady='5')
+button_cal    = Button(axl_bg, text="CALENDAR", command=viewCalendar)
+button_cal.pack(anchor=NE, pady='5')
 
-button_chips    = Button(axl_bg, text="TASKS", command=viewTask)
-button_chips.pack(anchor=NE, pady='5')
+button_notes    = Button(axl_bg, text="NOTES", command=viewNotes)
+button_notes.pack(anchor=NE, pady='5')
 
-button_library  = Button(axl_bg, text="NOTES", command=viewLibrary)
-button_library.pack(anchor=NE, pady='5')
+button_tasks  = Button(axl_bg, text="TASKS", command=viewTask)
+button_tasks.pack(anchor=NE, pady='5')
 
-button_navi     = Button(axl_bg, text="AXOL", command=viewNavi)
-button_navi.pack(anchor=NE, pady='5')
+button_comm     = Button(axl_bg, text="COMMAND\nPANEL", command=viewComm)
+button_comm.pack(anchor=NE, pady='5')
 
 button_settings = Button(axl_bg, text="SETTINGS", command=viewSettings)
 button_settings.pack(anchor=NE, pady='5')
 
 #=======Styling Widgets=======
-#List of PET Menus
-panels = [axl_bg, lib_bg, chip_bg, task_bg, set_bg, nav_bg]
+#List of Interface Menus
+panels = [axl_bg, note_bg, cal_bg, task_bg, set_bg, com_bg]
 
 #Apply styles to Labels and Buttons
 def configureObjects():
