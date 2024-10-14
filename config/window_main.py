@@ -9,6 +9,7 @@ from tkinter import *
 import time as tm
 import random as r
 import tkinter as tk
+import calendar as cal
 
 #=======Functions=======
 def viewTask():
@@ -114,11 +115,19 @@ task_todo   = Button(task_bg, text="TODO")
 task_todo.pack(side=TOP, anchor=NE, pady='5')
 
 #==========Calendar Elements==========
-cal_bg = Frame(axl_main, background=pgt.pet_bg_colour)
+cal_bg = Frame(axl_main, background=pgt.pet_button_colour)
 
 cal_label   = Label(cal_bg, text="Calendar", font=("Arial", 12))
 cal_label.configure(foreground="white", background=pgt.pet_button_colour)
 cal_label.pack(anchor=NE, fill='x')
+
+cal_content = str(dt.now())[0:10]
+cal_text    = Label(cal_bg, text = cal_content, justify="left")
+cal_text.pack(anchor=N, fill='x')
+
+cal_tasks   = "No tasks today"
+cal_t_list  = Label(cal_bg, text=cal_tasks)
+cal_t_list.pack(anchor=N, fill='both')
 
 cal_footer  = Frame(cal_bg, background=pgt.pet_button_colour, height='20')
 cal_footer.pack(side=BOTTOM, fill='x')
