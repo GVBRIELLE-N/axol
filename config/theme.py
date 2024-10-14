@@ -57,7 +57,7 @@ class puppypoppy:
     pet_theme_name      = "Leothera Dark"
     pet_button_relief   = "flat"
     pet_border          = "0"
-    pet_hover           = "13"
+    pet_hover           = "9"
     pet_text_colour     = "white"
     pet_bg_colour       = "#151515"
     pet_button_colour   = "#0E0E0E"
