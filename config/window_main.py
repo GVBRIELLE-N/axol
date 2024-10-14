@@ -125,7 +125,7 @@ cal_content = str(dt.now())[0:10]
 cal_text    = Label(cal_bg, text = cal_content, justify="left")
 cal_text.pack(anchor=N, fill='x')
 
-cal_tasks   = "No tasks today"
+cal_tasks   = "No plans today"
 cal_t_list  = Label(cal_bg, text=cal_tasks)
 cal_t_list.pack(anchor=N, fill='both')
 
@@ -141,6 +141,10 @@ note_bg = Frame(axl_main, background=pgt.pet_bg_colour)
 note_label    = Label(note_bg, text="Notes", font=("Arial", 12))
 note_label.configure(foreground="white", background=pgt.pet_button_colour)
 note_label.pack(anchor=NE, fill='x')
+
+note_text_area= Text(note_bg, height=15, width=50, background=pgt.pet_button_colour, foreground=pgt.pet_text_colour)
+note_text_area.pack(anchor=N, fill='both')
+note_text_area.insert(tk.END, "New Notes: " + cal_content)
 
 note_footer   = Frame(note_bg, background=pgt.pet_button_colour, height='20')
 note_footer.pack(side=BOTTOM, fill='x')
