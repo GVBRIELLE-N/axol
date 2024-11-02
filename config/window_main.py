@@ -150,7 +150,7 @@ note_footer   = Frame(note_bg, background=pgt.pet_button_colour, height='20')
 note_footer.pack(side=BOTTOM, fill='x')
 
 note_exit     = Button(note_bg, text="RETURN", command=hideNotes)
-note_exit.pack(side=BOTTOM, anchor=SE, pady='10')
+note_exit.pack(side=BOTTOM, anchor=S, fill='x')
 
 #==========Settings Elements==========
 set_bg = Frame(axl_main, background=pgt.pet_bg_colour)
@@ -178,11 +178,15 @@ com_label   = Label(com_bg, text="Command Panel", font=("Arial", 12))
 com_label.configure(foreground="white", background=pgt.pet_button_colour)
 com_label.pack(anchor=NE, fill='x')
 
+com_text_area = Text(com_bg, height=15, width=50, background="black", foreground="white")
+com_text_area.pack(anchor=N, fill='both')
+com_text_area.insert(tk.END, "Insert command here")
+
 com_footer  = Frame(com_bg, background=pgt.pet_button_colour, height='20')
 com_footer.pack(side=BOTTOM, fill='x')
 
 com_exit    = Button(com_bg, text="EXIT", command=hideComm)
-com_exit.pack(side=BOTTOM, anchor=SE, pady='10')
+com_exit.pack(side=BOTTOM, anchor=S, fill='x')
 
 #=======Labels=======
 app_title = Label(axl_bg, text="Espee Alpha Build", font=("Arial", 12))

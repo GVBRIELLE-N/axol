@@ -1,7 +1,7 @@
-from config.window_main import configureObjects, updateTime, axl_main
+import config.window_main as wm
 
 
 if __name__ == "__main__":
-    configureObjects()
-    updateTime()
-    axl_main.mainloop()
+    wm.configureObjects()
+    wm.updateTime()
+    wm.axl_main.mainloop()
